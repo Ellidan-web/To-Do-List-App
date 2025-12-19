@@ -8,16 +8,16 @@ This app allows users to **add, edit, delete, and manage tasks** with optional *
 
 ## Features
 
-- ✅ **Add Tasks**: Enter a task name with optional date and time  
-- ✅ **Edit Tasks**: Update task name, date, and time  
-- ✅ **Delete Tasks**: Remove tasks permanently  
-- ✅ **Mark Complete/Active**: Toggle task status  
-- ✅ **Filters**: View **All**, **Active**, or **Completed** tasks  
-- ✅ **Calendar Filter**: Filter tasks by a selected date  
-- ✅ **Reminders**: Alert user 5 minutes before a task is due  
-- ✅ **Drag-and-Drop**: Reorder tasks easily  
-- ✅ **Dark/Light Mode**: Toggle themes  
-- ✅ **Persistent Storage**: Tasks are saved in `localStorage`  
+- **Add Tasks**: Enter a task name with optional date and time  
+- **Edit Tasks**: Update task name, date, and time  
+- **Delete Tasks**: Remove tasks permanently  
+- **Mark Complete/Active**: Toggle task status  
+- **Filters**: View **All**, **Active**, or **Completed** tasks  
+- **Calendar Filter**: Filter tasks by a selected date  
+- **Reminders**: Alert user 5 minutes before a task is due  
+- **Drag-and-Drop**: Reorder tasks easily  
+- **Dark/Light Mode**: Toggle themes  
+- **Persistent Storage**: Tasks are saved in `localStorage`  
 
 ---
 
