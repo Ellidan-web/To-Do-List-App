@@ -1,259 +1,467 @@
 * { 
-  box-sizing:border-box; 
-  margin:0; padding:0; 
-  font-family:'Inter', sans-serif; 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: 'Inter', sans-serif; 
 }
 
 :root { 
-  --bg:#f5f6fa; 
-  --text:#333; 
-  --primary:#4a90e2; 
-  --secondary:#fff; 
-  --task-bg:#fff; 
-  --completed-text:#888; 
-  --border:#e0e0e0; 
+  --bg: #f5f6fa; 
+  --text: #333; 
+  --primary: #4a90e2; 
+  --secondary: #fff; 
+  --task-bg: #fff; 
+  --completed-text: #888; 
+  --border: #e0e0e0; 
 }
 
 body.dark {
-   --bg:#1f1f2e; 
-   --text:#f4f6f8; 
-   --primary:#4dabf7; 
-   --secondary:#2b2b3b; 
-   --task-bg:#2b2b3b; 
-   --completed-text:#777; 
-   --border:#444; }
-
-body { 
-  background:var(--bg); 
-  color:var(--text); 
-  display:flex; 
-  justify-content:center; 
-  padding:30px; 
-  transition:0.3s; 
+  --bg: #1f1f2e; 
+  --text: #f4f6f8; 
+  --primary: #4dabf7; 
+  --secondary: #2b2b3b; 
+  --task-bg: #2b2b3b; 
+  --completed-text: #777; 
+  --border: #444; 
 }
 
-/* Theme Toggle */
-.theme-toggle {
-   position:absolute; 
-   top:20px; 
-   right:20px; 
-  }
-
-.theme-toggle button {
-   cursor:pointer; 
-   background:var(--primary); 
-   border:none; 
-   padding:8px 14px; 
-   border-radius:6px; 
-   color:var(--secondary); 
-   font-size:16px; 
-   transition:0.3s; 
-  }
-
-.theme-toggle button:hover { 
-  background:#357ABD; 
+body { 
+  background: var(--bg); 
+  color: var(--text); 
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  transition: 0.3s; 
 }
 
 /* App Container */
 .app { 
-  background:var(--secondary);
-   width:100%;
-  max-width:600px; 
-  padding:30px 25px; 
-  border-radius:12px; 
-  box-shadow:0 15px 40px rgba(0,0,0,0.08); 
-  transition:0.3s; 
+  background: var(--secondary);
+  width: 100%;
+  max-width: 600px; 
+  padding: 30px 25px; 
+  border-radius: 12px; 
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); 
+  transition: 0.3s; 
+  position: relative;
+}
+
+/* Theme Toggle - Now inside container */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.theme-toggle button {
+  cursor: pointer; 
+  background: var(--primary); 
+  border: none; 
+  padding: 10px; 
+  border-radius: 6px; 
+  color: var(--secondary); 
+  font-size: 18px; 
+  transition: 0.3s; 
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle button:hover { 
+  background: #357ABD; 
+  transform: scale(1.05);
 }
 
 h1 { 
-  text-align:center; 
-  margin-bottom:25px; 
-  font-weight:600; 
-  color:var(--primary); 
+  text-align: center; 
+  margin-bottom: 25px; 
+  font-weight: 600; 
+  color: var(--primary); 
+  font-size: 1.8rem;
+  padding-right: 50px; /* Add space for the theme toggle */
 }
 
 /* Add Task Section */
 .input-section { 
-  display:flex; 
-  gap:10px; 
-  flex-wrap:wrap; 
-  margin-bottom:20px; 
+  display: flex; 
+  flex-direction: column;
+  gap: 12px; 
+  margin-bottom: 25px; 
 }
 
 .input-section input[type="text"] { 
-  flex:2; 
-  padding:12px; 
-  border-radius:8px; 
-  border:1px solid var(--border); 
+  width: 100%;
+  padding: 14px; 
+  border-radius: 8px; 
+  border: 1px solid var(--border); 
+  font-size: 16px;
 }
 
-.input-section input[type="date"], .input-section input[type="time"] {
-   flex:1; 
-   padding:10px; 
-   border-radius:8px; 
-   border:1px solid var(--border); 
-  }
+.input-date-time {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-section input[type="date"], 
+.input-section input[type="time"] {
+  flex: 1;
+  padding: 12px; 
+  border-radius: 8px; 
+  border: 1px solid var(--border); 
+  font-size: 15px;
+}
 
 .input-section button { 
-  flex:0.8; 
-  padding:12px 20px; 
-  border:none; 
-  border-radius:8px; 
-  background:var(--primary); 
-  color:var(--secondary); 
-  cursor:pointer; 
-  font-weight:500; 
-  transition:0.3s; 
+  width: 100%;
+  padding: 14px 20px; 
+  border: none; 
+  border-radius: 8px; 
+  background: var(--primary); 
+  color: var(--secondary); 
+  cursor: pointer; 
+  font-weight: 500; 
+  font-size: 16px;
+  transition: 0.3s; 
 }
 
 .input-section button:hover { 
-  background:#357ABD; 
+  background: #357ABD; 
 }
 
 /* Filters and Calendar */
 .filters-calendar { 
-  display:flex; 
-  justify-content:
-  space-between; 
-  align-items:center; 
-  margin-bottom:20px; 
-  flex-wrap:wrap; 
-  gap:10px; 
+  display: flex; 
+  flex-direction: column;
+  gap: 15px; 
+  margin-bottom: 25px; 
 }
 
 .filters { 
-  display:flex; 
-  gap:8px; 
-  flex-wrap:wrap; 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .filters button { 
-  padding:8px 12px; 
-  border:none; 
-  border-radius:8px; 
-  cursor:pointer; 
-  background:#eee; 
-  color:#333; 
-  font-weight:500; 
-  transition:0.3s; 
+  padding: 10px 15px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  background: #eee; 
+  color: #333; 
+  font-weight: 500; 
+  font-size: 14px;
+  transition: 0.3s; 
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
 }
 
 .filters button.active { 
-  background:var(--primary); 
-  color:var(--secondary); 
+  background: var(--primary); 
+  color: var(--secondary); 
 }
 
 .calendar-filter { 
-  display:flex; 
-  gap:8px; 
-  align-items:center; 
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .calendar-filter input[type="date"] { 
-  padding:8px; 
-  border-radius:6px; 
-  border:1px solid var(--border); 
+  padding: 10px; 
+  border-radius: 6px; 
+  border: 1px solid var(--border); 
+  font-size: 15px;
+  flex: 1;
+  min-width: 160px;
 }
 
 .calendar-filter button { 
-  padding:6px 12px; 
-  border:none; 
-  border-radius:6px; 
-  background:var(--primary); 
-  color:var(--secondary); 
-  cursor:pointer; 
-  transition:0.3s; 
+  padding: 10px 15px; 
+  border: none; 
+  border-radius: 6px; 
+  background: var(--primary); 
+  color: var(--secondary); 
+  cursor: pointer; 
+  transition: 0.3s; 
+  font-size: 14px;
+  min-width: 80px;
 }
 
 .calendar-filter button:hover { 
-  background:#357ABD;
+  background: #357ABD;
 }
 
 /* Task List */
 #taskList { 
-  list-style:none; 
+  list-style: none; 
+  margin-bottom: 25px;
 }
 
 /* Task Item */
 .task { 
-  display:flex; 
-  justify-content:space-between; 
-  align-items:center; 
-  background:var(--task-bg); 
-  padding:14px 16px; 
-  border-radius:10px; 
-  margin-bottom:12px; 
-  box-shadow:0 4px 15px rgba(0,0,0,0.05); 
-  border:1px solid var(--border); 
-  transition:0.3s; cursor:grab; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start;
+  background: var(--task-bg); 
+  padding: 16px; 
+  border-radius: 10px; 
+  margin-bottom: 12px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+  border: 1px solid var(--border); 
+  transition: 0.3s; 
+  cursor: grab; 
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .task.dragging { 
-  opacity:0.5; 
-  transform:scale(1.03); 
+  opacity: 0.5; 
+  transform: scale(1.03); 
 }
 
 .task.completed .text { 
-  text-decoration:line-through; 
-  color:var(--completed-text); 
+  text-decoration: line-through; 
+  color: var(--completed-text); 
+}
+
+.task-content {
+  flex: 1;
+  min-width: 200px;
 }
 
 .text { 
-  flex:1; 
-  font-size:16px; 
-  font-weight:500; 
-  word-break:break-word; 
+  font-size: 16px; 
+  font-weight: 500; 
+  word-break: break-word; 
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 .task .datetime { 
-  font-size:13px; 
-  color:#666; 
-  margin-right:10px; 
-  font-style:italic; 
+  font-size: 13px; 
+  color: #666; 
+  font-style: italic; 
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 body.dark .task .datetime { 
-  color:#aaa; 
+  color: #aaa; 
 }
 
 /* Task Buttons */
 .task-buttons { 
-  display:flex; 
-  gap:10px; 
+  display: flex; 
+  gap: 12px; 
+  align-items: center;
 }
 
 .task-buttons button { 
-  cursor:pointer; 
-  border:none; 
-  background:transparent; 
-  font-size:16px; 
-  transition:0.2s; 
+  cursor: pointer; 
+  border: none; 
+  background: transparent; 
+  font-size: 18px; 
+  transition: 0.2s; 
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text);
 }
 
 .task-buttons button:hover { 
-  transform:scale(1.2); 
+  transform: scale(1.2); 
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark .task-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Footer */
-#clearCompleted { 
-  padding:10px 16px;
-  border:none;
-  border-radius:8px;
-  background:var(--primary);
-  color:var(--secondary);
-  cursor:pointer;
-  font-weight:500;
-  transition:0.3s;
-  margin-left: 300px;
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
 }
 
-#clearCompleted:hover{
-    background:#357ABD;
+#taskCount { 
+  font-size: 15px; 
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
 }
 
-/* Responsive */
-@media(max-width:480px){
-  .input-section{flex-direction:column;}
-  .filters-calendar{flex-direction:column; align-items:flex-start;}
-  .filters{flex-wrap:wrap;}
+#clearCompleted {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--secondary);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+#clearCompleted:hover {
+  background: #357ABD;
+}
+
+/* Tablet and larger mobile */
+@media (min-width: 481px) {
+  h1 {
+    font-size: 2rem;
+    padding-right: 60px; /* Adjust for theme toggle */
+  }
+  
+  .theme-toggle button {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+ /* Tablet and larger mobile */
+@media (min-width: 481px) {
+  h1 {
+    font-size: 2rem;
+    padding-right: 60px;
+  }
+  
+  .theme-toggle button {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .input-section {
+    flex-direction: row;
+    flex-wrap: nowrap; /* Change from wrap to nowrap */
+    gap: 10px; /* Add gap between items */
+  }
+  
+  .input-section input[type="text"] {
+    flex: 3; /* Increase flex value to give more space */
+    min-width: 180px;
+  }
+  
+  .input-date-time {
+    flex: 2; /* Reduce flex value */
+    gap: 8px;
+  }
+  
+  .input-section button {
+    flex: 1; /* Keep this as is */
+    min-width: 100px; /* Reduce min-width */
+    max-width: 120px; /* Add max-width to prevent it from getting too wide */
+    padding: 12px 15px; /* Adjust padding if needed */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+}
+  
+  .filters-calendar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filters {
+    justify-content: flex-start;
+  }
+  
+  .filters button {
+    flex: 0;
+  }
+  
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #clearCompleted {
+    width: auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .theme-toggle {
+    top: 25px;
+    right: 25px;
+  }
+  
+  .theme-toggle button {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+  
+  h1 {
+    padding-right: 70px;
+  }
+  
+  .input-section {
+    flex-wrap: nowrap;
+  }
+  
+  .task {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  
+  .task-content {
+    min-width: 0;
+  }
+  
+  .text {
+    margin-bottom: 0;
+  }
+  
+  .task .datetime {
+    margin-right: 15px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .theme-toggle button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    padding-right: 45px;
+  }
+  
+  .app {
+    padding: 25px 20px;
+  }
 }
