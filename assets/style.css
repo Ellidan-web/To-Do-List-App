@@ -1,0 +1,259 @@
+* { 
+  box-sizing:border-box; 
+  margin:0; padding:0; 
+  font-family:'Inter', sans-serif; 
+}
+
+:root { 
+  --bg:#f5f6fa; 
+  --text:#333; 
+  --primary:#4a90e2; 
+  --secondary:#fff; 
+  --task-bg:#fff; 
+  --completed-text:#888; 
+  --border:#e0e0e0; 
+}
+
+body.dark {
+   --bg:#1f1f2e; 
+   --text:#f4f6f8; 
+   --primary:#4dabf7; 
+   --secondary:#2b2b3b; 
+   --task-bg:#2b2b3b; 
+   --completed-text:#777; 
+   --border:#444; }
+
+body { 
+  background:var(--bg); 
+  color:var(--text); 
+  display:flex; 
+  justify-content:center; 
+  padding:30px; 
+  transition:0.3s; 
+}
+
+/* Theme Toggle */
+.theme-toggle {
+   position:absolute; 
+   top:20px; 
+   right:20px; 
+  }
+
+.theme-toggle button {
+   cursor:pointer; 
+   background:var(--primary); 
+   border:none; 
+   padding:8px 14px; 
+   border-radius:6px; 
+   color:var(--secondary); 
+   font-size:16px; 
+   transition:0.3s; 
+  }
+
+.theme-toggle button:hover { 
+  background:#357ABD; 
+}
+
+/* App Container */
+.app { 
+  background:var(--secondary);
+   width:100%;
+  max-width:600px; 
+  padding:30px 25px; 
+  border-radius:12px; 
+  box-shadow:0 15px 40px rgba(0,0,0,0.08); 
+  transition:0.3s; 
+}
+
+h1 { 
+  text-align:center; 
+  margin-bottom:25px; 
+  font-weight:600; 
+  color:var(--primary); 
+}
+
+/* Add Task Section */
+.input-section { 
+  display:flex; 
+  gap:10px; 
+  flex-wrap:wrap; 
+  margin-bottom:20px; 
+}
+
+.input-section input[type="text"] { 
+  flex:2; 
+  padding:12px; 
+  border-radius:8px; 
+  border:1px solid var(--border); 
+}
+
+.input-section input[type="date"], .input-section input[type="time"] {
+   flex:1; 
+   padding:10px; 
+   border-radius:8px; 
+   border:1px solid var(--border); 
+  }
+
+.input-section button { 
+  flex:0.8; 
+  padding:12px 20px; 
+  border:none; 
+  border-radius:8px; 
+  background:var(--primary); 
+  color:var(--secondary); 
+  cursor:pointer; 
+  font-weight:500; 
+  transition:0.3s; 
+}
+
+.input-section button:hover { 
+  background:#357ABD; 
+}
+
+/* Filters and Calendar */
+.filters-calendar { 
+  display:flex; 
+  justify-content:
+  space-between; 
+  align-items:center; 
+  margin-bottom:20px; 
+  flex-wrap:wrap; 
+  gap:10px; 
+}
+
+.filters { 
+  display:flex; 
+  gap:8px; 
+  flex-wrap:wrap; 
+}
+
+.filters button { 
+  padding:8px 12px; 
+  border:none; 
+  border-radius:8px; 
+  cursor:pointer; 
+  background:#eee; 
+  color:#333; 
+  font-weight:500; 
+  transition:0.3s; 
+}
+
+.filters button.active { 
+  background:var(--primary); 
+  color:var(--secondary); 
+}
+
+.calendar-filter { 
+  display:flex; 
+  gap:8px; 
+  align-items:center; 
+}
+
+.calendar-filter input[type="date"] { 
+  padding:8px; 
+  border-radius:6px; 
+  border:1px solid var(--border); 
+}
+
+.calendar-filter button { 
+  padding:6px 12px; 
+  border:none; 
+  border-radius:6px; 
+  background:var(--primary); 
+  color:var(--secondary); 
+  cursor:pointer; 
+  transition:0.3s; 
+}
+
+.calendar-filter button:hover { 
+  background:#357ABD;
+}
+
+/* Task List */
+#taskList { 
+  list-style:none; 
+}
+
+/* Task Item */
+.task { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+  background:var(--task-bg); 
+  padding:14px 16px; 
+  border-radius:10px; 
+  margin-bottom:12px; 
+  box-shadow:0 4px 15px rgba(0,0,0,0.05); 
+  border:1px solid var(--border); 
+  transition:0.3s; cursor:grab; 
+}
+
+.task.dragging { 
+  opacity:0.5; 
+  transform:scale(1.03); 
+}
+
+.task.completed .text { 
+  text-decoration:line-through; 
+  color:var(--completed-text); 
+}
+
+.text { 
+  flex:1; 
+  font-size:16px; 
+  font-weight:500; 
+  word-break:break-word; 
+}
+
+.task .datetime { 
+  font-size:13px; 
+  color:#666; 
+  margin-right:10px; 
+  font-style:italic; 
+}
+
+body.dark .task .datetime { 
+  color:#aaa; 
+}
+
+/* Task Buttons */
+.task-buttons { 
+  display:flex; 
+  gap:10px; 
+}
+
+.task-buttons button { 
+  cursor:pointer; 
+  border:none; 
+  background:transparent; 
+  font-size:16px; 
+  transition:0.2s; 
+}
+
+.task-buttons button:hover { 
+  transform:scale(1.2); 
+}
+
+/* Footer */
+#clearCompleted { 
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  background:var(--primary);
+  color:var(--secondary);
+  cursor:pointer;
+  font-weight:500;
+  transition:0.3s;
+  margin-left: 300px;
+}
+
+#clearCompleted:hover{
+    background:#357ABD;
+}
+
+/* Responsive */
+@media(max-width:480px){
+  .input-section{flex-direction:column;}
+  .filters-calendar{flex-direction:column; align-items:flex-start;}
+  .filters{flex-wrap:wrap;}
+}
